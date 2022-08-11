@@ -1,51 +1,35 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
+// import SpeechRecognition, {
+//   useSpeechRecognition,
+// } from "react-speech-recognition";
 
-import useSpeechToText from "react-hook-speech-to-text";
+// const Dictaphone = () => {
+//   const {
+//     transcript,
+//     listening,
+//     resetTranscript,
+//     browserSupportsSpeechRecognition,
+//   } = useSpeechRecognition();
 
-const VoiceToText = () => {
-  const {
-    error,
-    interimResult,
-    isRecording,
-    results,
-    startSpeechToText,
-    stopSpeechToText,
-  } = useSpeechToText({
-    continuous: false,
-    useLegacyResults: false,
-  });
+//   if (!browserSupportsSpeechRecognition) {
+//     return <span>Browser doesn't support speech recognition.</span>;
+//   }
 
-  // useEffect(() => {
-  // startSpeechToText();
-  // });
-  console.log(interimResult);
+//   return (
+//     <div>
+//       <p>Microphone: {listening ? "on" : "off"}</p>
+//       <div>
+//         {" "}
+//         <button onClick={SpeechRecognition.startListening}>Start</button>
+//       </div>
 
-  if (error) return <p>Web Speech API is not available in this browser 🤷‍</p>;
-
-  return (
-    <>
-      <div>
-        <h1>Recording: {isRecording.toString()}</h1>
-        <button onClick={isRecording ? stopSpeechToText : startSpeechToText}>
-          {isRecording ? "Stop Recording" : "Start Recording"}
-        </button>
-        <ul>
-          {results.map((result: any) => (
-            <li key={result.timestamp}>{result.transcript}</li>
-          ))}
-          {interimResult && <li>{interimResult}</li>}
-        </ul>
-      </div>
-    </>
-  );
-};
-
-export default VoiceToText;
-
-// import React from "react";
-
-// const index = () => {
-//   return <div>index</div>;
+//       <div>
+//         {" "}
+//         <button onClick={SpeechRecognition.stopListening}>Stop</button>
+//       </div>
+//       <button onClick={resetTranscript}>Reset</button>
+//       <p>{transcript}</p>
+//     </div>
+//   );
 // };
-
-// export default index;
+// export default Dictaphone;
